@@ -1,0 +1,74 @@
+{
+  "Nav": {
+    "home": "Accueil",
+    "menu": "Menu",
+    "cart": "Panier",
+    "reservations": "Réservations",
+    "about": "À propos",
+    "admin": "Admin"
+  },
+  "Index": {
+    "title": "Yamato Dz - Cuisine Japonaise Authentique",
+    "description": "Découvrez l'art de la cuisine japonaise au cœur de Chéraga, Alger.",
+    "cta": "Commander",
+    "hero_subtitle": "Alger, Cheraga",
+    "about_title": "L'authenticité dans chaque détail",
+    "about_description": "Chez Yamato Dz, nous croyons que dîner est plus qu'un simple repas—c'est une expérience spirituelle. Nos chefs préparent chaque plat avec la précision d'un calligraphe, utilisant les meilleurs ingrédients pour vous offrir le cœur du Japon.",
+    "about_cta": "Notre Histoire",
+    "menu_cta_title": "Découvrez nos arts culinaires",
+    "menu_cta_description": "Explorez une collection de Nigiri traditionnels, de Ramen savoureux et de Tempura délicats.",
+    "view_menu": "Menu Digital"
+  },
+  "Menu": {
+    "title": "Notre Menu",
+    "add_to_cart": "Ajouter au Panier",
+    "cart": "Panier",
+    "total": "Total",
+    "checkout": "Paiement",
+    "empty": "Votre panier est vide"
+  },
+  "Checkout": {
+    "title": "Compléter Votre Commande",
+    "name": "Nom Complet",
+    "phone": "Numéro de Téléphone",
+    "address_link": "Lien Google Maps (Optionnel)",
+    "submit": "Passer la Commande via WhatsApp",
+    "required": "Ce champ est obligatoire"
+  },
+  "Reviews": {
+    "title": "Avis Clients",
+    "write": "Écrire un Avis",
+    "verified": "Acheteur Vérifié",
+    "rating": "Évaluation"
+  },
+  "Admin": {
+    "orders": "Commandes",
+    "menu": "Gestion du Menu",
+    "reviews": "Modération des Avis",
+    "track": "Suivi des Commandes"
+  },
+  "Reservations": {
+    "title": "Réserver une Table",
+    "name": "Nom Complet",
+    "phone": "Numéro de Téléphone",
+    "date": "Date",
+    "time": "Heure Souhaitée",
+    "guests": "Nombre de Personnes",
+    "notes": "Demandes Spéciales (Optionnel)",
+    "submit": "Confirmer via WhatsApp",
+    "guests_1": "1 Personne",
+    "guests_2": "2 Personnes",
+    "guests_3": "3 Personnes",
+    "guests_4": "4 Personnes",
+    "guests_5": "5 Personnes",
+    "guests_6": "6+ Personnes",
+    "success_title": "Demande Envoyée !",
+    "success_message": "Merci. Nous confirmerons votre réservation très bientôt."
+  },
+  "About": {
+    "heritage_label": "Notre Héritage",
+    "heritage_title": "Un pont entre Tokyo et Alger.",
+    "heritage_p1": "Yamato Dz est né d'un profond respect pour les traditions séculaires des arts culinaires japonais. Notre voyage a commencé avec une seule mission : apporter le goût authentique et sans compromis du Japon dans les rues animées d'Alger.",
+    "heritage_p2": "Chaque ingrédient est choisi avec un soin méticuleux. Chaque technique reflète des siècles de maîtrise. Des coupes immaculées de nos sashimis aux bouillons complexes de 24 heures de nos ramen, nous servons l'harmonie dans l'assiette."
+  }
+}

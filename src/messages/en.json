@@ -1,0 +1,74 @@
+{
+  "Nav": {
+    "home": "Home",
+    "menu": "Menu",
+    "cart": "Cart",
+    "reservations": "Reservations",
+    "about": "About",
+    "admin": "Admin"
+  },
+  "Index": {
+    "title": "Yamato Dz - Authentic Japanese Cuisine",
+    "description": "Experience the art of Japanese dining in the heart of Cheraga, Algiers.",
+    "cta": "Order Now",
+    "hero_subtitle": "Algiers, Cheraga",
+    "about_title": "Authenticity in Every Detail",
+    "about_description": "At Yamato Dz, we believe that dining is more than just a meal—it's a spiritual experience. Our master chefs prepare each dish with the precision of a calligrapher, using only the finest ingredients to bring you the true heart of Japan.",
+    "about_cta": "Our Story",
+    "menu_cta_title": "Discover Our Culinary Arts",
+    "menu_cta_description": "Explore a curated collection of traditional Nigiri, flavorful Ramen bowls, and delicate Tempura.",
+    "view_menu": "View Digital Menu"
+  },
+  "Menu": {
+    "title": "Our Menu",
+    "add_to_cart": "Add to Cart",
+    "cart": "Cart",
+    "total": "Total",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty"
+  },
+  "Checkout": {
+    "title": "Complete Your Order",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "address_link": "Google Maps Link (Optional)",
+    "submit": "Place Order via WhatsApp",
+    "required": "This field is required"
+  },
+  "Reviews": {
+    "title": "Customer Reviews",
+    "write": "Write a Review",
+    "verified": "Verified Buyer",
+    "rating": "Rating"
+  },
+  "Admin": {
+    "orders": "Orders",
+    "menu": "Menu Management",
+    "reviews": "Review Moderation",
+    "track": "Order Tracking"
+  },
+  "Reservations": {
+    "title": "Reserve a Table",
+    "name": "Full Name",
+    "phone": "Phone Number",
+    "date": "Date",
+    "time": "Preferred Time",
+    "guests": "Number of Guests",
+    "notes": "Special Requests (Optional)",
+    "submit": "Confirm via WhatsApp",
+    "guests_1": "1 Person",
+    "guests_2": "2 Persons",
+    "guests_3": "3 Persons",
+    "guests_4": "4 Persons",
+    "guests_5": "5 Persons",
+    "guests_6": "6+ Persons",
+    "success_title": "Request Sent!",
+    "success_message": "Thank you. We will confirm your reservation shortly."
+  },
+  "About": {
+    "heritage_label": "Our Heritage",
+    "heritage_title": "A bridge between Tokyo & Algiers.",
+    "heritage_p1": "Yamato Dz was born from a profound respect for the age-old traditions of Japanese culinary arts. Our journey began with a single mission: to bring the authentic, uncompromised taste of Japan to the vibrant streets of Algiers.",
+    "heritage_p2": "Every ingredient is chosen with meticulous care. Every technique reflects centuries of mastery. From the pristine cuts of our sashimi to the complex, 24-hour broths of our ramen, we serve harmony on a plate."
+  }
+}
