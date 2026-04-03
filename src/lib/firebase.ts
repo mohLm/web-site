@@ -12,9 +12,17 @@ const firebaseConfig = {
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
 };
 
-const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const db = getFirestore(app);
-const storage = getStorage(app);
+// Only initialize Firebase if we have an API key (prevents crashing on Vercel without env vars)
+let app;
+let auth: ReturnType<typeof getAuth> | any = null;
+let db: ReturnType<typeof getFirestore> | any = null;
+let storage: ReturnType<typeof getStorage> | any = null;
+
+if (firebaseConfig.apiKey && firebaseConfig.apiKey !== "YOUR_API_KEY_HERE") {
+  app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
+  auth = getAuth(app);
+  db = getFirestore(app);
+  storage = getStorage(app);
+}
 
 export { app, auth, db, storage };
