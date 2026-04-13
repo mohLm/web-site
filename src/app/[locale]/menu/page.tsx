@@ -8,9 +8,19 @@ import { collection, getDocs, query, orderBy } from 'firebase/firestore';
 import { useCart } from '@/context/CartContext';
 import { Link } from '@/navigation';
 
+export interface MenuItem {
+  id: string;
+  name: string;
+  category: string;
+  price: string;
+  description: string;
+  available?: boolean;
+  imageUrl?: string;
+}
+
 const CATEGORIES = ['Les Maki', 'Hossomaki', 'Nigiri', 'Onigiri'];
 
-const PLACEHOLDER_ITEMS = [
+const PLACEHOLDER_ITEMS: MenuItem[] = [
   { id: '1', name: 'Maki Saumon', category: 'Les Maki', price: '800 DA', description: 'Fresh salmon wrapped in premium sushi rice and toasted seaweed.' },
   { id: '2', name: 'Maki Thon', category: 'Les Maki', price: '900 DA', description: 'Bluefin tuna, sushi rice, and nori roll.' },
   { id: '3', name: 'Chicken Cheese', category: 'Les Maki', price: '700 DA', description: 'Crispy chicken roll with cream cheese.' },
