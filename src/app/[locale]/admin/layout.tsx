@@ -20,12 +20,20 @@ export default function AdminLayout({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!auth) {
+      console.warn("Firebase Auth not initialized.");
+      setLoading(false);
+      if (!pathname.includes("login")) {
+        router.push(`/${locale}/admin/login`);
+      }
+      return () => {};
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
       
-      const bypass = typeof window !== 'undefined' ? localStorage.getItem('devBypass') : null;
-      if (!currentUser && !bypass && !pathname.includes("login")) {
+      if (!currentUser && !pathname.includes("login")) {
         router.push(`/${locale}/admin/login`);
       }
     });
@@ -41,27 +49,19 @@ export default function AdminLayout({
     );
   }
 
-  const bypass = typeof window !== 'undefined' ? localStorage.getItem('devBypass') : null;
-
-  if ((!user && !bypass) || pathname.includes("login")) {
+  if (!user || pathname.includes("login")) {
     return <div className="min-h-screen bg-white font-sans">{children}</div>;
   }
 
   const handleLogout = async () => {
-    if (localStorage.getItem('devBypass')) {
-      localStorage.removeItem('devBypass');
-      window.location.href = `/${locale}/admin/login`;
-      return;
-    }
     await signOut(auth);
     router.push(`/${locale}/admin/login`);
   };
 
   const navItems = [
-    { name: "DASHBOARD", href: `/${locale}/admin` },
-    { name: "MENU", href: `/${locale}/admin/menu` },
-    { name: "ORDERS", href: `/${locale}/admin/orders` },
-    { name: "REVIEWS", href: `/${locale}/admin/reviews` },
+    { name: "LIVE ORDERS", href: `/${locale}/admin` },
+    { name: "RESERVATIONS", href: `/${locale}/admin/reservations` },
+    { name: "MENU", href: `/${locale}/admin/menu` }
   ];
 
   const isActive = (href: string) => {

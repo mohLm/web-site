@@ -15,11 +15,7 @@ export default function LocaleSwitcher() {
   function onSelect(nextLocale: string) {
     if (nextLocale === locale) return;
     startTransition(() => {
-      router.replace(
-        // @ts-expect-error -- pathname is correct
-        {pathname, params},
-        {locale: nextLocale}
-      );
+      router.replace(pathname, {locale: nextLocale});
     });
   }
 

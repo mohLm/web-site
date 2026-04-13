@@ -18,6 +18,11 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
+  
+  // REQUIRED FOR NEXT-INTL APP ROUTER LOCALE CACHING
+  const { setRequestLocale } = await import('next-intl/server');
+  setRequestLocale(locale);
+
   const messages = await getMessages();
   const dir = locale === 'ar' ? 'rtl' : 'ltr';
 

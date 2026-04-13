@@ -23,7 +23,7 @@ export default function AdminLogin() {
 
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      router.push(`/${locale}/admin/orders`);
+      router.push(`/${locale}/admin`);
     } catch (err: any) {
       setError(err.message || "Failed to sign in. Please check your credentials.");
     } finally {
@@ -51,15 +51,6 @@ export default function AdminLogin() {
         )}
 
         <form onSubmit={handleLogin} className="space-y-6">
-          {process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "YOUR_API_KEY_HERE" && (
-            <div className="p-4 bg-orange-500/10 border border-orange-500/50 rounded flex items-start gap-3">
-              <span className="text-orange-500">ℹ</span>
-              <p className="text-sm text-orange-500 flex-1">
-                Firebase is not configured yet. The login button is disabled. Please use the <strong>Developer Bypass</strong> button below to view the dashboard!
-              </p>
-            </div>
-          )}
-
           <div>
             <label className="block text-sm font-medium text-zinc-300 mb-2">Admin Email</label>
             <input 
@@ -67,8 +58,7 @@ export default function AdminLogin() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              disabled={process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "YOUR_API_KEY_HERE"}
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all font-sans disabled:opacity-50"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all font-sans"
               placeholder="admin@yamato.dz"
             />
           </div>
@@ -80,34 +70,20 @@ export default function AdminLogin() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              disabled={process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "YOUR_API_KEY_HERE"}
-              className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all font-sans disabled:opacity-50"
+              className="w-full bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-red-500 transition-all font-sans"
               placeholder="••••••••"
             />
           </div>
 
           <button 
             type="submit" 
-            disabled={loading || process.env.NEXT_PUBLIC_FIREBASE_API_KEY === "YOUR_API_KEY_HERE"}
+            disabled={loading}
             className="w-full bg-white text-black font-semibold rounded-lg py-3 px-4 hover:bg-zinc-200 focus:ring-4 focus:ring-white/20 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Authenticating..." : "Sign In to Dashboard"}
           </button>
         </form>
 
-        <div className="mt-8 text-center border-t border-zinc-800 pt-6">
-          <p className="text-zinc-500 text-xs mb-3">Developer Mode</p>
-          <button 
-            type="button" 
-            onClick={() => {
-              localStorage.setItem('devBypass', 'true');
-              router.push(`/${locale}/admin/orders`);
-            }}
-            className="text-sm text-zinc-400 hover:text-white transition-colors underline"
-          >
-            Bypass Auth (View Dashboard)
-          </button>
-        </div>
       </motion.div>
     </div>
   );

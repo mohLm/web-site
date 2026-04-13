@@ -76,14 +76,14 @@ export default function Home() {
               letterSpacing: '-0.02em'
             }}
           >
-            Yamato Dz:<br/>
-            <span className="text-primary italic font-light">The Art of Zen</span><br/>
-            in Every Bite.
+            {t('hero_title_1')}<br/>
+            <span className="text-primary italic font-light">{t('hero_title_highlight')}</span><br/>
+            {t('hero_title_2')}
           </motion.h1>
 
           <motion.div {...fadeUp(0.3)} className="flex flex-col items-start w-full">
             <p className="font-sans text-lg text-muted max-w-md leading-relaxed border-l-2 border-primary/30 pl-6 mb-8 bg-white/60 py-2">
-              <span className="font-bold text-foreground">Our Philosophy:</span><br/>
+              <span className="font-bold text-foreground">{t('philosophy')}</span><br/>
               {t('description')}
             </p>
             
@@ -148,11 +148,11 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8 border-b border-primary/20 pb-8">
             <div className="max-w-xl">
-              <h3 className="uppercase tracking-[0.4em] text-primary font-bold text-xs mb-4 font-sans border-l-2 border-primary pl-3">Our Menu</h3>
+              <h3 className="uppercase tracking-[0.4em] text-primary font-bold text-xs mb-4 font-sans border-l-2 border-primary pl-3">{t('our_menu')}</h3>
               <h2 className="category-title" style={{ fontSize: '3rem', margin: 0 }}>{t('menu_cta_title')}</h2>
             </div>
             <Link href="/menu" className="font-bold text-[10px] uppercase tracking-[0.3em] border-2 border-foreground px-10 py-4 hover:bg-foreground hover:text-white transition-all bg-white font-sans text-foreground">
-              View Full Menu
+              {t('view_menu')}
             </Link>
           </div>
 

@@ -5,6 +5,7 @@ import { useTranslations } from 'next-intl'
 import LocaleSwitcher from './LocaleSwitcher'
 import { useState, useEffect } from 'react'
 import { useCart } from '@/context/CartContext'
+import YamatoLogo from './YamatoLogo'
 
 export default function Header() {
   const t = useTranslations('Nav')
@@ -26,7 +27,7 @@ export default function Header() {
   }, [menuOpen])
 
   const navLinks = [
-    { href: '/', label: 'Home' },
+    { href: '/', label: t('home') },
     { href: '/menu', label: t('menu') },
     { href: '/reservations', label: t('reservations') },
   ]
@@ -48,21 +49,9 @@ export default function Header() {
         }}
       >
         <div style={{ maxWidth: 1000, margin: '0 auto', padding: '0 2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-          {/* Logo Placeholder */}
-          <Link href="/" style={{ textDecoration: 'none' }}>
-            <div style={{
-              display: 'flex', 
-              flexDirection: 'column', 
-              alignItems: 'center', 
-              justifyContent: 'center', 
-              border: '2px dashed var(--color-primary)', 
-              padding: '10px 20px', 
-              borderRadius: '8px',
-              backgroundColor: 'rgba(255,255,255,0.5)'
-            }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: 800, color: 'var(--color-primary)', fontFamily: 'var(--font-display)'}}>YAMATO LOGO</span>
-              <span style={{ fontSize: '0.5rem', color: 'var(--color-muted)', fontWeight: 600}}>(Insert Logo Image Here)</span>
-            </div>
+          {/* Logo */}
+          <Link href="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+            <YamatoLogo className="h-12 md:h-14 w-auto transition-transform duration-300 hover:scale-105" />
           </Link>
 
           {/* Desktop Nav */}
@@ -103,17 +92,25 @@ export default function Header() {
                   letterSpacing: '0.3em',
                   color: 'var(--color-foreground)',
                   transition: 'color 0.3s ease',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
                 }}
                 onMouseEnter={e => (e.currentTarget.style.color = 'var(--color-primary)')}
                 onMouseLeave={e => (e.currentTarget.style.color = 'var(--color-foreground)')}
               >
-                {t('menu') === 'Menu' ? 'Cart' : t('cart' as never) || 'Cart'}
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                <span className="hidden md:inline">{t('menu') === 'Menu' ? 'Cart' : t('cart' as never) || 'Cart'}</span>
               </span>
               {totalItems > 0 && (
                 <span style={{
                   position: 'absolute',
-                  top: -8,
-                  right: -12,
+                  top: -6,
+                  right: -8,
                   background: 'var(--color-primary)',
                   color: 'white',
                   fontSize: '0.5rem',
@@ -135,9 +132,13 @@ export default function Header() {
 
           {/* Mobile: Cart badge + Hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }} className="show-mobile">
-            <Link href="/cart" style={{ position: 'relative', textDecoration: 'none' }}>
-              <span style={{ fontSize: '0.65rem', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.3em', color: 'var(--color-foreground)' }}>
-                Cart
+            <Link href="/cart" style={{ position: 'relative', textDecoration: 'none', display: 'flex', alignItems: 'center' }}>
+              <span style={{ color: 'var(--color-foreground)' }}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
               </span>
               {totalItems > 0 && (
                 <span style={{

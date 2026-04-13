@@ -43,9 +43,8 @@ export default function Footer() {
         <div className="pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted tracking-widest uppercase">
           <p>© {year} YAMATO DZ. All rights reserved.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-primary transition-colors">Instagram</a>
-            <a href="#" className="hover:text-primary transition-colors">Facebook</a>
-            <a href="#" className="hover:text-primary transition-colors">TikTok</a>
+            <a href="https://maps.google.com/?q=Yamato+Dz+Cheraga+Algiers" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Localisation</a>
+            <a href="https://instagram.com/yamatodz" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Instagram</a>
           </div>
         </div>
       </div>

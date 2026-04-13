@@ -3,6 +3,8 @@
 import { useTranslations } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
+import { db } from '@/lib/firebase';
+import { collection, addDoc } from 'firebase/firestore';
 
 const RESTAURANT_PHONE = '213555123456';
 
@@ -19,26 +21,41 @@ export default function ReservationsPage() {
     setForm(prev => ({ ...prev, [field]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const guestsLabel = t(form.guests as (typeof GUEST_OPTIONS)[number]);
-    let message = `*RESERVATION REQUEST — YAMATO DZ*%0A%0A`;
-    message += `*Name:* ${form.name}%0A`;
-    message += `*Phone:* ${form.phone}%0A`;
-    message += `*Date:* ${form.date}%0A`;
-    message += `*Time:* ${form.time}%0A`;
-    message += `*Guests:* ${guestsLabel}%0A`;
-    if (form.notes) message += `*Notes:* ${form.notes}%0A`;
+    
+    try {
+      const reservationData = {
+        name: form.name,
+        phone: form.phone,
+        date: form.date,
+        time: form.time,
+        guests: guestsLabel,
+        notes: form.notes,
+        status: 'pending',
+        createdAt: new Date().toISOString()
+      };
 
-    const url = `https://wa.me/${RESTAURANT_PHONE}?text=${message}`;
-    window.open(url, '_blank');
+      // Save to Firebase
+      await addDoc(collection(db, "reservations"), reservationData);
+      
+      // Ping Discord notification ignoring errors
+      await fetch('/api/notify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ type: 'reservation', data: reservationData })
+      }).catch(err => console.log('Notification error', err));
 
-    setTimeout(() => {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 600);
+    } catch (error) {
+      console.error("Error creating reservation:", error);
+      setIsSubmitting(false);
+      alert("An error occurred. Please try again.");
+    }
   };
 
   const inputStyle: React.CSSProperties = {
@@ -279,9 +296,9 @@ export default function ReservationsPage() {
                   type="submit"
                   disabled={isSubmitting}
                   className="btn-primary"
-                  style={{ width: '100%', marginTop: '0.5rem' }}
+                  style={{ width: '100%', marginTop: '0.5rem', opacity: isSubmitting ? 0.5 : 1 }}
                 >
-                  {isSubmitting ? '...' : t('submit')}
+                  {isSubmitting ? 'Processing...' : 'Confirm Reservation'}
                 </button>
               </form>
             </motion.div>
